@@ -20,16 +20,7 @@ export default {
             todoItems: []
         }
     },
-    /* life cycle method */
-    created() {
-        if (localStorage.length > 0) {
-            for (var i = 0; i < localStorage.length; i++) {
-                var itemJson = localStorage.getItem(localStorage.key(i));
-                //parse() 함수 json -> object 변환
-                this.todoItems.push(JSON.parse(itemJson));
-            }
-        }
-    },
+
     methods: {
         removeTodo(todoItem, index) {
             localStorage.removeItem(todoItem.item);

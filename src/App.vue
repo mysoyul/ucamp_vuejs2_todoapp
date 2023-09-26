@@ -23,11 +23,20 @@ export default {
   },
   data() {
     return {
+      todoItems: []
+    }
+  },//data
+  /* life cycle method */
+  created() {
+    if (localStorage.length > 0) {
+      for (var i = 0; i < localStorage.length; i++) {
+        var itemJson = localStorage.getItem(localStorage.key(i));
+        //parse() 함수 json -> object 변환
+        this.todoItems.push(JSON.parse(itemJson));
+      }
     }
   },
 }
 </script>
 
-<style src="@/assets/styles/styles.css">
-
-</style>
+<style src="@/assets/styles/styles.css"></style>
