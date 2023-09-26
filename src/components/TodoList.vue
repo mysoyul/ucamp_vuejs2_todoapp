@@ -1,6 +1,10 @@
 <template>
     <div>
-        List
+        <ul>
+            <li v-for="(todo, idx) in todoItems" :key="idx">
+                {{ todo }}
+            </li>
+        </ul>
     </div>
 </template>
 
