@@ -2,7 +2,7 @@
   <div id="app">
     <TodoHeader></TodoHeader>
     <TodoInput @addTodoEvent="addTodo"></TodoInput>
-    <TodoList :todo-data="todoItems"></TodoList>
+    <TodoList :todo-data="todoItems" @removeTodoEvent="removeTodo"></TodoList>
     <TodoFooter></TodoFooter>
   </div>
 </template>
@@ -32,6 +32,10 @@ export default {
       //stringify() 함수 object -> json string
       localStorage.setItem(todoItem, JSON.stringify(todoObj));
       this.todoItems.push(todoObj);
+    },
+    removeTodo(todoItem, index) {
+      localStorage.removeItem(todoItem.item);
+      this.todoItems.splice(index, 1);
     },
   },
   /* life cycle method */
