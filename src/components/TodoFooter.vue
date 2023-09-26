@@ -15,6 +15,9 @@ export default {
 </script>
 
 <style scoped>
+span {
+    cursor: pointer;
+}
 .clearAllContainer {
     width: 8.5rem;
     height: 50px;

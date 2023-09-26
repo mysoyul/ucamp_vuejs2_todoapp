@@ -4,6 +4,15 @@
         <span class="addContainer" v-on:click="addTodo">
             <i class="fas fa-plus addBtn"></i>
         </span>
+        <MyModal v-if="showModal" @close="showModal = false">
+            <h3 slot="header">
+                경고!
+                <i class="closeModalBtn fas fa-times" @click="showModal = false"></i>
+            </h3>
+            <div slot="body">
+                아무것도 입력하지 않으셨습니다.
+            </div>
+        </MyModal>
     </div>
 </template>
 
@@ -23,14 +32,16 @@ export default {
             showModal: false
         }
     }, //data
-    components:{
-       MyModal     
+    components: {
+        MyModal
     }, //components
     methods: {
         addTodo() {
             if (this.newTodoItem !== '') {
                 this.$emit('addTodoEvent', this.newTodoItem);
                 this.clearInput();
+            } else {
+                this.showModal = !this.showModal;
             }
         }, //addTodo
         clearInput() {
@@ -43,8 +54,12 @@ export default {
 </script>
 
 <style scoped>
+i {
+    cursor: pointer;
+}
 input:focus {
-    outline: none !important; box-shadow: 0 0 0.4px #d6a8e9;
+    outline: none !important;
+    box-shadow: 0 0 0.4px #d6a8e9;
 }
 
 .inputBox {
@@ -72,5 +87,9 @@ input:focus {
 .addBtn {
     color: white;
     vertical-align: middle;
+}
+
+.closeModalBtn {
+    color: #42b983;
 }
 </style>
