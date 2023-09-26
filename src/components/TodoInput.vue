@@ -8,6 +8,8 @@
 </template>
 
 <script>
+import MyModal from '@/components/common/MyModal.vue';
+
 export default {
     //LifeCycle Hook method
     //$refs는 document.getElementById(id) 함수처럼 html dom에 직접 접근할 때 사용되는 객체
@@ -17,9 +19,13 @@ export default {
     },
     data() {
         return {
-            newTodoItem: ""
+            newTodoItem: "",
+            showModal: false
         }
     }, //data
+    components:{
+       MyModal     
+    }, //components
     methods: {
         addTodo() {
             if (this.newTodoItem !== '') {
