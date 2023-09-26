@@ -5,7 +5,7 @@
     <TodoList :todo-data="todoItems" 
       @removeTodoEvent="removeTodo"
       @toggleTodoEvent="toggleTodo"></TodoList>
-    <TodoFooter></TodoFooter>
+    <TodoFooter @clearTodoEvent="clearTodo"></TodoFooter>
   </div>
 </template>
 
@@ -44,6 +44,10 @@ export default {
       this.todoItems[index].completed = !completed;
       localStorage.removeItem(item);
       localStorage.setItem(item, JSON.stringify(this.todoItems[index]));
+    },
+    clearTodo() {
+      localStorage.clear();
+      this.todoItems = [];
     }
   },
   /* life cycle method */
