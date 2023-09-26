@@ -2,7 +2,7 @@
   <div id="app">
     <TodoHeader></TodoHeader>
     <TodoInput></TodoInput>
-    <TodoList></TodoList>
+    <TodoList :todo-data="todoItems"></TodoList>
     <TodoFooter></TodoFooter>
   </div>
 </template>
