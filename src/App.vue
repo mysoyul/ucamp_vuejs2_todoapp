@@ -26,6 +26,14 @@ export default {
       todoItems: []
     }
   },//data
+  methods: {
+    addTodo() {
+      var todoObj = { completed: false, item: this.newTodoItem };
+      //stringify() 함수 object -> json string
+      localStorage.setItem(this.newTodoItem, JSON.stringify(todoObj));
+      this.todoItems.push(todoObj);
+    },
+  },
   /* life cycle method */
   created() {
     if (localStorage.length > 0) {

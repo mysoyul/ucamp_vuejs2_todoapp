@@ -23,9 +23,7 @@ export default {
     methods: {
         addTodo() {
             if (this.newTodoItem !== '') {
-                var todoObj = { completed: false, item: this.newTodoItem };
-                //stringify() 함수 object -> json string
-                localStorage.setItem(this.newTodoItem, JSON.stringify(todoObj));
+                
                 this.clearInput();
             }
         }, //addTodo
