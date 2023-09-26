@@ -40,7 +40,7 @@ export default {
 
 <style scoped>
 input:focus {
-    outline: none;
+    outline: none !important; box-shadow: 0 0 0.4px #d6a8e9;
 }
 
 .inputBox {
@@ -53,6 +53,8 @@ input:focus {
 .inputBox input {
     border-style: none;
     font-size: 0.9rem;
+    width: 75%;
+    height: 50%;
 }
 
 .addContainer {
