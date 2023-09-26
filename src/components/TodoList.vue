@@ -16,18 +16,13 @@
 <script>
 export default {
     props: ['todoData'],
-    data() {
-        return {
-            todoItems: []
-        }
-    },
 
     methods: {
         removeTodo(todoItem, index) {
             this.$emit("removeTodoEvent", todoItem, index);
         },
         toggleComplete(todoItem, index) {
-            
+            this.$emit("toggleTodoEvent", todoItem, index);
         }
     },
 }

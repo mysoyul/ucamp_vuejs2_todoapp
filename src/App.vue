@@ -2,7 +2,9 @@
   <div id="app">
     <TodoHeader></TodoHeader>
     <TodoInput @addTodoEvent="addTodo"></TodoInput>
-    <TodoList :todo-data="todoItems" @removeTodoEvent="removeTodo"></TodoList>
+    <TodoList :todo-data="todoItems" 
+      @removeTodoEvent="removeTodo"
+      @toggleTodoEvent="toggleTodo"></TodoList>
     <TodoFooter></TodoFooter>
   </div>
 </template>
