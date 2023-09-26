@@ -2,7 +2,7 @@
     <div>
         <ul>
             <li v-for="(todo, idx) in todoItems" :key="idx" class="shadow">
-                {{ todo }}
+                {{ todo.item }}
                 <span class="removeBtn" @click="removeTodo(todo, idx)">
                     <i class="fas fa-trash-alt"></i>
                 </span>
@@ -22,7 +22,9 @@ export default {
     created() {
         if (localStorage.length > 0) {
             for (var i = 0; i < localStorage.length; i++) {
-                this.todoItems.push(localStorage.key(i));
+                var itemJson = localStorage.getItem(localStorage.key(i));
+                //parse() 함수 json -> object 변환
+                this.todoItems.push(JSON.parse(itemJson));
             }
         }
     },
