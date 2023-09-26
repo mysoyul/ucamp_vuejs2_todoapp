@@ -30,7 +30,7 @@ export default {
     addTodo(todoItem) {
       var todoObj = { completed: false, item: todoItem };
       //stringify() 함수 object -> json string
-      localStorage.setItem(this.newTodoItem, JSON.stringify(todoObj));
+      localStorage.setItem(todoItem, JSON.stringify(todoObj));
       this.todoItems.push(todoObj);
     },
   },
