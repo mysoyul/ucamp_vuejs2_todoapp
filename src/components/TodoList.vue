@@ -36,9 +36,10 @@ export default {
             this.todoItems.splice(index, 1);
         },
         toggleComplete(todoItem) {
-            todoItem.completed = !todoItem.completed;
-            localStorage.removeItem(todoItem.item);
-            localStorage.setItem(todoItem.item, JSON.stringify(todoItem));
+            const { item, completed } = todoItem;
+            todoItem.completed = !completed;
+            localStorage.removeItem(item);
+            localStorage.setItem(item, JSON.stringify(todoItem));
         }
     },
 }
