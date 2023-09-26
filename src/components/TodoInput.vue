@@ -23,7 +23,7 @@ export default {
     methods: {
         addTodo() {
             if (this.newTodoItem !== '') {
-                
+                this.$emit('addTodoEvent', this.newTodoItem);
                 this.clearInput();
             }
         }, //addTodo

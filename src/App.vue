@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <TodoHeader></TodoHeader>
-    <TodoInput></TodoInput>
+    <TodoInput @addTodoEvent="addTodo"></TodoInput>
     <TodoList :todo-data="todoItems"></TodoList>
     <TodoFooter></TodoFooter>
   </div>
@@ -27,8 +27,8 @@ export default {
     }
   },//data
   methods: {
-    addTodo() {
-      var todoObj = { completed: false, item: this.newTodoItem };
+    addTodo(todoItem) {
+      var todoObj = { completed: false, item: todoItem };
       //stringify() 함수 object -> json string
       localStorage.setItem(this.newTodoItem, JSON.stringify(todoObj));
       this.todoItems.push(todoObj);
