@@ -3,7 +3,7 @@
         <TransitionGroup name="list" tag="ul">
             <li v-for="(todo, idx) in getTodoItems" :key="idx" class="shadow">
                 <i class="fas fa-check checkBtn" :class="{ checkBtnCompleted: todo.completed }"
-                    @click="toggleComplete(todo, idx)"></i>
+                    @click="toggleComplete(todo)"></i>
                 <span :class="{ textCompleted: todo.completed }">{{ todo.item }}</span>
                 <span class="removeBtn" @click="removeTodo(todo)">
                     <i class="fas fa-trash-alt"></i>
@@ -25,12 +25,14 @@ export default {
     },
     methods: {
         //...mapMutations(['removeTodo'])
-        ...mapActions({ removeTodo: 'removeTodoItem'}),  //mapActions(['removeTodoItem'])
+        ...mapActions({ removeTodo: 'removeTodoItem' }),  //mapActions(['removeTodoItem'])
         // removeTodo(todoItem, index) {
         //     this.$store.commit('removeTodo', { todoItem, index });
         // },
-        toggleComplete(todoItem, index) {
-            this.$store.commit('toggleTodo', { todoItem, index });
+        toggleComplete(todoItem) {
+            //this.$store.commit('toggleTodo', { todoItem, index });
+            todoItem.completed = !todoItem.completed;
+            this.$store.dispatch('toggleTodoItem', todoItem);
         }
     },
 }
