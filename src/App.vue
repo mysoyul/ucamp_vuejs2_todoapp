@@ -1,9 +1,8 @@
 <template>
   <div id="app">
     <TodoHeader></TodoHeader>
-    <TodoInput @addTodoEvent="addTodo"></TodoInput>
-    <TodoList :todo-data="todoItems" 
-      @removeTodoEvent="removeTodo"
+    <TodoInput></TodoInput>
+    <TodoList @removeTodoEvent="removeTodo"
       @toggleTodoEvent="toggleTodo"></TodoList>
     <TodoFooter @clearTodoEvent="clearTodo"></TodoFooter>
   </div>
@@ -29,12 +28,6 @@ export default {
     }
   },//data
   methods: {
-    addTodo(todoItem) {
-      var todoObj = { completed: false, item: todoItem };
-      //stringify() 함수 object -> json string
-      localStorage.setItem(todoItem, JSON.stringify(todoObj));
-      this.todoItems.push(todoObj);
-    },
     removeTodo(todoItem, index) {
       localStorage.removeItem(todoItem.item);
       this.todoItems.splice(index, 1);
@@ -48,16 +41,6 @@ export default {
     clearTodo() {
       localStorage.clear();
       this.todoItems = [];
-    }
-  },
-  /* life cycle method */
-  created() {
-    if (localStorage.length > 0) {
-      for (var i = 0; i < localStorage.length; i++) {
-        var itemJson = localStorage.getItem(localStorage.key(i));
-        //parse() 함수 json -> object 변환
-        this.todoItems.push(JSON.parse(itemJson));
-      }
     }
   },
 }
