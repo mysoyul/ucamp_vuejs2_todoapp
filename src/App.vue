@@ -3,7 +3,7 @@
     <TodoHeader></TodoHeader>
     <TodoInput></TodoInput>
     <TodoList></TodoList>
-    <TodoFooter @clearTodoEvent="clearTodo"></TodoFooter>
+    <TodoFooter></TodoFooter>
   </div>
 </template>
 
@@ -20,18 +20,7 @@ export default {
     TodoInput,
     TodoList,
     TodoFooter
-  },
-  data() {
-    return {
-      todoItems: []
-    }
-  },//data
-  methods: {
-    clearTodo() {
-      localStorage.clear();
-      this.todoItems = [];
-    }
-  },
+  },  
 }
 </script>
 
