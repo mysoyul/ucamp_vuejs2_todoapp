@@ -21,7 +21,7 @@ export default {
             this.$store.commit('removeTodo', { todoItem, index });
         },
         toggleComplete(todoItem, index) {
-            this.$emit("toggleTodoEvent", todoItem, index);
+            this.$store.commit('toggleTodo', { todoItem, index });
         }
     },
 }

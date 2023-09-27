@@ -2,8 +2,7 @@
   <div id="app">
     <TodoHeader></TodoHeader>
     <TodoInput></TodoInput>
-    <TodoList 
-      @toggleTodoEvent="toggleTodo"></TodoList>
+    <TodoList></TodoList>
     <TodoFooter @clearTodoEvent="clearTodo"></TodoFooter>
   </div>
 </template>
@@ -28,12 +27,6 @@ export default {
     }
   },//data
   methods: {
-    toggleTodo(todoItem, index) {
-      const { item, completed } = todoItem;
-      this.todoItems[index].completed = !completed;
-      localStorage.removeItem(item);
-      localStorage.setItem(item, JSON.stringify(this.todoItems[index]));
-    },
     clearTodo() {
       localStorage.clear();
       this.todoItems = [];
