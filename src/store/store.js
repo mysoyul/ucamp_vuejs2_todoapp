@@ -19,7 +19,12 @@ export const store = new Vuex.Store({
     //state, actions, mutations, getters, modules
     state: {
         todoItems: storage.fetch()
-    },
+    }, //state
+    getters: {
+        getTodoItems(state) {
+            return state.todoItems;
+        }
+    }, //getters
     mutations: {
         addTodo(state, todo_text) {
             const obj = { completed: false, item: todo_text };
@@ -42,7 +47,5 @@ export const store = new Vuex.Store({
             localStorage.clear();
             state.todoItems = [];
         },
-
-
-    },
+    }, //mutations
 });
