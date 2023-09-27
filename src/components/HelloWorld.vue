@@ -1,28 +1,27 @@
 <template>
-  <div class="hello">
+  <div id="app">
+    <TodoHeader></TodoHeader>
+    <TodoInput></TodoInput>
+    <TodoList></TodoList>
+    <TodoFooter></TodoFooter>
   </div>
 </template>
 
 <script>
+import TodoHeader from '@/components/TodoHeader.vue'
+import TodoInput from '@/components/TodoInput.vue'
+import TodoList from '@/components/TodoList.vue'
+import TodoFooter from '@/components/TodoFooter.vue'
+
 export default {
-  name: 'HelloWorld',
+  name: 'App',
+  components: {
+    TodoHeader,
+    TodoInput,
+    TodoList,
+    TodoFooter
+  },  
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-h3 {
-  margin: 40px 0 0;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
-}
-</style>
+<style src="@/assets/styles/styles.css"></style>
