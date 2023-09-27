@@ -18,7 +18,9 @@ Vue.use(VueAxios, axios);
 //     },
 // };
 
-const todo_url = 'http://localhost:4500/api/todos';
+const api_url = process.env.VUE_APP_APIURL;
+const todo_url = `${api_url}/todos`
+//'http://localhost:4500/api/todos';
 
 export const store = new Vuex.Store({
     //state, actions, mutations, getters, modules
