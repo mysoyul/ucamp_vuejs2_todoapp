@@ -2,7 +2,7 @@
   <div id="app">
     <TodoHeader></TodoHeader>
     <TodoInput></TodoInput>
-    <TodoList @removeTodoEvent="removeTodo"
+    <TodoList 
       @toggleTodoEvent="toggleTodo"></TodoList>
     <TodoFooter @clearTodoEvent="clearTodo"></TodoFooter>
   </div>
@@ -28,10 +28,6 @@ export default {
     }
   },//data
   methods: {
-    removeTodo(todoItem, index) {
-      localStorage.removeItem(todoItem.item);
-      this.todoItems.splice(index, 1);
-    },
     toggleTodo(todoItem, index) {
       const { item, completed } = todoItem;
       this.todoItems[index].completed = !completed;
