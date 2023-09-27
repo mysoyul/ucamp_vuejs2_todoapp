@@ -33,12 +33,21 @@ export const store = new Vuex.Store({
     actions: {
         loadTodoItems(context) {
             axios
-                .get(todo_url)  //Promise
+                .get(`${todo_url}`)  //Promise
                 .then(res => res.data)
                 .then(items => {
                     context.commit('setTodoItems', items)
                 })
-        },
+        }, //loadTodoItems
+        addTodoItem(context, payload) {
+            axios
+                .post(`${todo_url}`, payload)
+                .then(r => r.data)
+                .then(items => {
+                    context.commit('setTodoItems', items)
+                })
+        }, //addTodoItem
+
     }, //actions
     mutations: {
         setTodoItems(state, items) {

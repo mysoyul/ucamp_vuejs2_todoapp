@@ -38,7 +38,10 @@ export default {
     methods: {
         addTodo() {
             if (this.newTodoItem !== '') {
-                this.$store.commit('addTodo', this.newTodoItem);
+                //this.$store.commit('addTodo', this.newTodoItem);
+                const itemObj = { completed: false, item: this.newTodoItem };
+                this.$store.dispatch('addTodoItem', itemObj);
+                
                 this.clearInput();
             } else {
                 this.showModal = !this.showModal;
@@ -57,6 +60,7 @@ export default {
 i {
     cursor: pointer;
 }
+
 input:focus {
     outline: none !important;
     box-shadow: 0 0 0.4px #d6a8e9;
