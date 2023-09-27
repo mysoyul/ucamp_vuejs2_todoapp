@@ -5,7 +5,7 @@
                 <i class="fas fa-check checkBtn" :class="{ checkBtnCompleted: todo.completed }"
                     @click="toggleComplete(todo, idx)"></i>
                 <span :class="{ textCompleted: todo.completed }">{{ todo.item }}</span>
-                <span class="removeBtn" @click="removeTodo({todoItem:todo, index:idx})">
+                <span class="removeBtn" @click="removeTodo({ todoItem: todo, index: idx })">
                     <i class="fas fa-trash-alt"></i>
                 </span>
             </li>
@@ -17,7 +17,10 @@
 import { mapGetters, mapMutations } from 'vuex'
 
 export default {
-    computed:{
+    mounted() {
+        this.$store.dispatch('loadTodoItems');
+    },
+    computed: {
         ...mapGetters(['getTodoItems'])
     },
     methods: {
@@ -77,11 +80,12 @@ li {
 
 .list-enter-active,
 .list-leave-active {
-  transition: all 1s ease;
+    transition: all 1s ease;
 }
+
 .list-enter-from,
 .list-leave-to {
-  opacity: 0;
-  transform: translateX(30px);
+    opacity: 0;
+    transform: translateX(30px);
 }
 </style>
