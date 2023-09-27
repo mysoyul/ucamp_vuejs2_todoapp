@@ -5,7 +5,7 @@
                 <i class="fas fa-check checkBtn" :class="{ checkBtnCompleted: todo.completed }"
                     @click="toggleComplete(todo, idx)"></i>
                 <span :class="{ textCompleted: todo.completed }">{{ todo.item }}</span>
-                <span class="removeBtn" @click="removeTodo({ todoItem: todo, index: idx })">
+                <span class="removeBtn" @click="removeTodo(todo)">
                     <i class="fas fa-trash-alt"></i>
                 </span>
             </li>
@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import { mapGetters, mapMutations } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 
 export default {
     mounted() {
@@ -24,7 +24,8 @@ export default {
         ...mapGetters(['getTodoItems'])
     },
     methods: {
-        ...mapMutations(['removeTodo']),
+        //...mapMutations(['removeTodo'])
+        ...mapActions({ removeTodo: 'removeTodoItem'}),  //mapActions(['removeTodoItem'])
         // removeTodo(todoItem, index) {
         //     this.$store.commit('removeTodo', { todoItem, index });
         // },

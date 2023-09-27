@@ -39,9 +39,9 @@ export default {
         addTodo() {
             if (this.newTodoItem !== '') {
                 //this.$store.commit('addTodo', this.newTodoItem);
-                const itemObj = { completed: false, item: this.newTodoItem };
+                const itemObj = { item: this.newTodoItem, completed: false  };
                 this.$store.dispatch('addTodoItem', itemObj);
-                
+
                 this.clearInput();
             } else {
                 this.showModal = !this.showModal;

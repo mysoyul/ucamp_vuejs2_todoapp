@@ -47,6 +47,15 @@ export const store = new Vuex.Store({
                     context.commit('setTodoItems', items)
                 })
         }, //addTodoItem
+        removeTodoItem(context, payload) {
+            axios
+                .delete(`${todo_url}/${payload.id}`)
+                .then(r => r.data)
+                .then(items => {
+                    context.commit('setTodoItems', items)
+                })
+        }, //removeTodoItem
+
 
     }, //actions
     mutations: {
