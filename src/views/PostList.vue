@@ -33,9 +33,10 @@ export default {
     methods: {
         fetchData() {
             this.loading = true;
-            this.$store.dispatch('loadPosts').then(() => {
-                this.loading = false;
-            });
+            this.$store.dispatch('loadPosts');
+            // this.$store.dispatch('loadPosts').then(() => {
+            //     this.loading = false;
+            // });
         },
     },
 };

@@ -1,11 +1,12 @@
 <template>
     <div>
+      <!-- v-model="currentPost.text" -->
       <h2>New Post</h2>
       <form @submit.prevent="onSubmit">
         <textarea
           cols="30"
           rows="10"
-          v-model="inputTxt"
+          v-model="inputTxt" 
           :disabled="disabled"
         ></textarea><br/>
         <input type="submit" :value="btnTxt" :disabled="disabled" />
@@ -19,6 +20,11 @@
       return {
         isSaving: false,
         inputTxt: "",
+        // currentPost: {
+        //   text:'',
+        //   author:'',
+        //   isCompleted:false
+        // }
       };
     },
     computed: {
@@ -33,6 +39,8 @@
       onSubmit() {
         this.isSaving = true;
         const post = { text: this.inputTxt };
+        //this.$store.dispatch("addPost", this.currentPost);
+
         this.$store.dispatch("addPost", post).then(() => {
           this.isSaving = false;
           this.inputTxt = "";

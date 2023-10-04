@@ -5,6 +5,8 @@
         <div v-if="getPost">
             <h3>[ID: {{ getPost.id }}]</h3>
             <div>{{ getPost.text }}</div>
+            <br />
+            <button @click="deletePost(getPost.id)">Delete</button>
         </div>
     </div>
 </template>
@@ -28,10 +30,15 @@ export default {
     methods: {
         fetchData() {
             this.loading = true;
-            this.$store.dispatch('loadPost', { id: this.$route.params.id }).then(() => {
-                this.loading = false;
-            });
+            this.$store.dispatch('loadPost', { id: this.$route.params.id });
+            // this.$store.dispatch('loadPost', { id: this.$route.params.id }).then(() => {
+            //     this.loading = false;
+            // });
         },
+        deletePost(id) {
+            this.$store.dispatch("removePost", id);
+            this.$router.push("/posts")
+        }
     },
 };
 </script>
